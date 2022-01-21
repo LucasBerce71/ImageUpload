@@ -2,13 +2,16 @@ import React, { useCallback } from 'react';
 
 import { useDropzone } from 'react-dropzone';
 import { validFiles } from '../../config/dropZoneAcceptedFiles';
+import { useFiles } from '../../hooks/useFiles';
 
 import { DropContainer, UploadMessage } from './styles';
 
 const Upload: React.FC = () => {
+    const { handleUpload } = useFiles();
+
     const onDrop = useCallback((files) => {
-        //handle upload call
-    }, []);
+        handleUpload(files);
+    }, [handleUpload]);
 
     const {
         getRootProps,
